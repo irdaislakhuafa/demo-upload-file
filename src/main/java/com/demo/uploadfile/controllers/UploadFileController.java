@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/")
-public class UploadFIleController {
+public class UploadFileController {
 
     private static final String urlUpload = "/home/artix/.cache/uploads/";
 
