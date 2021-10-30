@@ -15,11 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 public class CSVHelper {
 
     // check is csv file
-    public boolean isCSVFile(MultipartFile file) {
+    public static boolean isCSVFile(MultipartFile file) {
         return file.getContentType().equalsIgnoreCase("text/csv");
     }
 
-    public List<Book> csvToBook(MultipartFile file) {
+    public static List<Book> csvToBook(MultipartFile file) {
         List<Book> result = new ArrayList<>();
 
         try {
@@ -42,7 +42,8 @@ public class CSVHelper {
                             // ignore case headers
                             withIgnoreHeaderCase().withTrim());
 
-            for (CSVRecord csvRecord : csvParser) {
+            // add csvRecords to Books
+            for (CSVRecord csvRecord : csvParser.getRecords()) {
                 result.add(new Book(
                         // id
                         Long.parseLong(csvRecord.get("Id")),
