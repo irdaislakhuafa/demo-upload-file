@@ -27,6 +27,10 @@ public class UploadFIleController {
     // url for upload file
     @PostMapping("/upload")
     public String uploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
+
+        // debug content type
+        System.out.println("Content Type : " + file.getContentType());
+
         // check file not empty
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload.");
